@@ -1,5 +1,3 @@
-const binance = require('./binance');
-
 module.exports = class Account {
 
   constructor(binance) {

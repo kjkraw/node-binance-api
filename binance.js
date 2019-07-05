@@ -78,8 +78,7 @@ module.exports.Binance = class Binance {
 
 };
 
-
-module.exports.Order = class Order {
+module.exports.Order = class Order { //todo Get rid of order class
 
   /**
    *

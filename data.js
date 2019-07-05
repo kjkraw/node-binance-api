@@ -7,7 +7,16 @@ module.exports = class Data {
     this.binance = binance;
   }
 
-  klines(symbol, interval = '5m', startTime = null, endTime = null, limit = 500) { //todo Move to books
+  /**
+   *
+   * @param symbol
+   * @param interval
+   * @param startTime
+   * @param endTime
+   * @param limit
+   * @returns {PromiseLike<T | never> | Promise<T | never>}
+   */
+  klines(symbol, {interval = '5m', startTime = null, endTime = null, limit = 500} = {}) {
     if (!INTERVALS.includes(interval))
       throw Error("The interval '" + interval + "' is not a valid kline interval!");
     let params = {
@@ -23,17 +32,16 @@ module.exports = class Data {
   }
 
   price(symbol) {
-    return this.binance.get('/api/v3/ticker/price',{symbol: symbol}).then((res) => {
+    return this.binance.get('/api/v3/ticker/price', {symbol: symbol}).then((res) => {
       return res.data;
-    })
+    });
   }
 
-  avgPrice(symbol){
+  avgPrice(symbol) {
     return this.binance.get('/api/v3/avgPrice', {symbol: symbol}).then((res) => {
       return res.data;
-    })
+    });
   }
-
 
 
 };
