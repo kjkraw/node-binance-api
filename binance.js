@@ -6,9 +6,6 @@ const Data = require('./data');
 
 const INTERVALS = ['1m', '3m', '5m', '15m', '30m', '1h', '2h', '4h', '6h', '8h', '12h', '1d', '3d', '1w', '1M'];
 
-const api_key = "skJ7jTlgjoss6OmVF4E9lKfit9TVfIrYcQ1h07ZxNff8BSv6L0Oy7mOXjmsjJbCG";
-const secret_key = "BHSRAYTfprCgeWhHofM8UmArXdKc7m4lm5d02NrnuORLmI0TiUYBMG0LuPyf6ffX";
-
 module.exports.Binance = class Binance {
 
   constructor(apiKey, secretKey, testMode = true) {
