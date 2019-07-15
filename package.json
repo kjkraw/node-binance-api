@@ -1,6 +1,6 @@
 {
   "name": "binance-api",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "",
   "main": "binance.js",
   "scripts": {
