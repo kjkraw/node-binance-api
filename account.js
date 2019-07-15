@@ -4,14 +4,16 @@ module.exports = class Account {
     this.binance = binance;
   }
 
-  test_order(order) {
-    return this.binance.post('/api/v3/order/test', {}, order.params).then((res) => {
+  test_order({symbol, side, quantity, price, type = 'LIMIT'}) {
+    return this.binance.post('/api/v3/order/test', {}, {symbol, side, quantity, price, type}).then((res) => {
       return res.data;
     });
   }
 
-  place_order(order) {
-    return this.binance.post('/api/v3/order', {}, order.params).then((res) => {
+  place_order({symbol, side, quantity, price, type = 'LIMIT'}) {
+    if (this.binance.testMode)
+      return this.test_order({symbol, side, quantity, price, type});
+    return this.binance.post('/api/v3/order', {}, {symbol, side, quantity, price, type}).then((res) => {
       return res.data;
     });
   }
@@ -28,22 +30,21 @@ module.exports = class Account {
     });
   }
 
-  open_orders(symbol){
+  open_orders(symbol) {
     return this.binance.signed_get('/api/v3/openOrders').then((res) => {
       return res.data;
-    })
+    });
   }
 
   //Implement all_orders
 
-  info(){
+  info() {
     return this.binance.signed_get('api/v3/account').then((res) => {
       return res.data;
-    })
+    });
   }
 
   //Implement myTrades
-
 
 
 };

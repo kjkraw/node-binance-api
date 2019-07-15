@@ -72,35 +72,3 @@ module.exports.Binance = class Binance {
   }
 
 };
-
-module.exports.Order = class Order { //todo Get rid of order class
-
-  /**
-   *
-   * @param symbol: String
-   * @param side: EnumTradeSide
-   * @param quantity: Float
-   * @param price: Float
-   */
-  constructor(symbol, side, quantity, price) {
-    this.symbol = symbol.toUpperCase();
-    this.side = side;
-    this.quantity = quantity;
-    this.price = price;
-    this.type = EnumTradeType.limit;
-  }
-
-  get params() {
-    return {
-      symbol: this.symbol,
-      side: this.side,
-      type: this.type,
-      quantity: this.quantity,
-      price: this.price
-    };
-  }
-
-  toPostgres() { //todo
-
-  }
-};
